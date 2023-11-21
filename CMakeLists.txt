@@ -19,6 +19,12 @@ target_sources(
     src/parseline.c
 )
 
+target_include_directories(
+  parseline
+  PUBLIC
+    include
+)
+
 add_library(parseline_shared SHARED $<TARGET_OBJECTS:parseline>)
 
 set_target_properties(
