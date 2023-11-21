@@ -71,6 +71,12 @@ parseline_shift (parseline_t *ln, char **buf, size_t *len) {
 }
 
 void
+parseline_flush (parseline_t *ln, char **buf, size_t *len) {
+  *len = ln->buffered - ln->consumed;
+  *buf = ln->base + ln->consumed;
+}
+
+void
 parseline_destroy (parseline_t *ln) {
   if (ln->base) free(ln->base);
   ln->base = NULL;
